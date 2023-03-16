@@ -16,9 +16,9 @@ public class Nif {
     private char letra;
     private LocalDate fechaCaducidad;
 
-    public Nif(long numero, char letra, LocalDate fechaCaducidad) {
+    public Nif(long numero, LocalDate fechaCaducidad) {
         this.numero = numero;
-        this.letra = letra;
+        this.letra = calcularLetra();
         this.fechaCaducidad = fechaCaducidad;
     }
     
@@ -52,11 +52,11 @@ public class Nif {
     }
     
     private char calcularLetra(){
-        long divNum = this.numero % 23;
+        int divNum = (int)numero % 23;
         
-        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+        char[] letras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
         
-        char res = letras.charAt((char)divNum);
+        char res = letras[divNum];
         
         return res;
     }
